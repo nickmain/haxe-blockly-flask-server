@@ -1,2 +1,4 @@
-# haxe-blockly-flask-server
-Simple Flask back-end for persisting Blockly workspaces
+Simple Flask back-end for persisting Blockly workspaces.
+
+Dependencies:
+* [../haxe-flask](../haxe-flask)
