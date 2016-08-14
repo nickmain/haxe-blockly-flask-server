@@ -1,4 +1,4 @@
 Simple Flask back-end for persisting Blockly workspaces.
 
 Dependencies:
-* [../haxe-flask](../haxe-flask)
+* [../haxe-flask](https://github.com/nickmain/haxe-flask)
