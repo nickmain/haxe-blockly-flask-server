@@ -42,9 +42,9 @@ class Main {
     static function listStore(): Dynamic {
         try {
             var fileNames = sys.FileSystem.readDirectory('storage')
-                .filter(function(n){ return n.charAt(0) != '.'; })
-                .map(function(n){return {name: n};});
-            return listTemplate.execute({files: fileNames});
+                                .filter(function(n){ return n.charAt(0) != '.'; })
+                                .map(function(n){return {name: n};});
+            return filelistTemplate.execute({files: fileNames});
         }
         catch(e: Dynamic) {
             var resp = app.make_response('could not list store: $e');
@@ -58,15 +58,20 @@ class Main {
         return "Hello, world !!! " + bodyType + "  " + Sys.getCwd();
     }
 
-    static var listTemplate = new Template(
+    static var filelistTemplate = new Template(
 '<html>
     <head><title>Stored Files</title></head>
     <body>
+    ::if (files.length < 1)::
+        <p>No files in the store.</p>
+    ::else::
+        <p>Files in the store:</p>
         <ul>
             ::foreach files::
             <li><a href="/store/::name::">::name::</a></li>
             ::end::
         </ul>
+    ::end::
     </body>
 </html>'
     );
